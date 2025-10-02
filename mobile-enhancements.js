@@ -138,67 +138,34 @@ function optimizeMobileAnimations() {
 }
 
 function addMobileNavToggle() {
+    // Navigation is now always visible at top, no toggle needed
     const nav = document.querySelector('.main-nav');
     if (!nav) return;
 
-    // Create mobile nav toggle button
-    const toggleBtn = document.createElement('button');
-    toggleBtn.className = 'mobile-nav-toggle';
-    toggleBtn.innerHTML = '☰ MENU';
-    toggleBtn.style.cssText = `
-        display: none;
-        position: fixed;
-        top: 10px;
-        right: 10px;
-        z-index: 1000;
-        background: linear-gradient(145deg, #333333, #1a1a1a);
-        border: 2px outset #666666;
-        color: white;
-        padding: 10px 15px;
-        font-weight: bold;
-        font-size: 12px;
-    `;
-
-    // Show toggle on mobile
-    if (window.innerWidth <= 768) {
-        toggleBtn.style.display = 'block';
-    }
-
-    // Toggle navigation
-    toggleBtn.addEventListener('click', () => {
-        nav.classList.toggle('mobile-nav-open');
-        toggleBtn.innerHTML = nav.classList.contains('mobile-nav-open') ? '✕ CLOSE' : '☰ MENU';
-    });
-
-    document.body.appendChild(toggleBtn);
-
-    // Add mobile nav styles
+    // Add smooth scroll for mobile nav
     const style = document.createElement('style');
     style.innerHTML = `
         @media (max-width: 768px) {
             .main-nav {
-                position: fixed;
+                position: sticky;
                 top: 0;
-                left: -100%;
-                width: 80%;
-                height: 100vh;
-                background: rgba(0, 0, 0, 0.95);
-                z-index: 999;
-                transition: left 0.3s ease;
-                display: flex;
-                flex-direction: column;
-                padding: 60px 20px 20px;
-                overflow-y: auto;
+                z-index: 998;
+                background: linear-gradient(45deg, #660000, #000066, #006600, #660066, #666600),
+                            repeating-linear-gradient(90deg, transparent, transparent 10px, rgba(255,255,255,0.1) 10px, rgba(255,255,255,0.1) 20px);
+                background-size: 300% 100%, 20px 100%;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
             }
-            .main-nav.mobile-nav-open {
-                left: 0;
+            .main-nav::-webkit-scrollbar {
+                height: 6px;
             }
-            .main-nav .nav-btn {
-                display: block;
-                width: 100%;
-                margin: 10px 0;
-                padding: 15px;
-                text-align: left;
+            .main-nav::-webkit-scrollbar-track {
+                background: rgba(0, 0, 0, 0.5);
+            }
+            .main-nav::-webkit-scrollbar-thumb {
+                background: #ff0000;
+                border-radius: 3px;
             }
         }
     `;
