@@ -154,6 +154,62 @@
 
     .window-content {
         padding: 15px 10px;
+        background: linear-gradient(135deg, #f8f8f8 0%, #e8e8e8 100%) !important;
+        color: #1a1a1a !important;
+    }
+
+    .window-content p,
+    .window-content li {
+        font-size: 14px;
+        line-height: 1.6;
+        color: #2a2a2a !important;
+    }
+
+    .window-content .highlight {
+        background: linear-gradient(45deg, #ffff00, #ffcc00) !important;
+        color: #1a1a1a !important;
+        font-weight: bold;
+        padding: 2px 6px;
+        border-radius: 3px;
+    }
+
+    .about-me,
+    .gaming-section,
+    .contact-section,
+    .inspiration-section {
+        background: rgba(255, 255, 255, 0.7) !important;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+    }
+
+    /* Enhanced mobile readability for about_alex.exe */
+    #home .window-content {
+        background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%) !important;
+        font-size: 14px !important;
+        line-height: 1.6 !important;
+    }
+
+    #home .intro-text {
+        background: rgba(255, 255, 255, 0.9) !important;
+        padding: 15px !important;
+        margin: 10px 0 !important;
+    }
+
+    #home .window-content h3 {
+        font-size: 16px !important;
+        color: #0a0a0a !important;
+        margin: 15px 0 8px 0 !important;
+    }
+
+    #home .interests-list li {
+        font-size: 13px !important;
+        color: #333 !important;
+        padding: 4px 0 !important;
+    }
+
+    #home .contact-item {
+        background: rgba(255, 255, 255, 0.95) !important;
+        font-size: 12px !important;
+        padding: 8px 12px !important;
     }
 
     /* Content Sections */
@@ -392,11 +448,28 @@
     /* Footer */
     .site-footer {
         padding: 15px 10px;
-        font-size: 10px;
+        font-size: 11px;
+        position: relative;
+        z-index: 1000;
+        margin-top: auto;
+        width: 100%;
     }
 
     .footer-links {
-        font-size: 10px;
+        font-size: 11px;
+        margin-top: 10px;
+        line-height: 1.4;
+    }
+
+    .footer-links a {
+        display: inline-block;
+        margin: 5px 8px;
+        padding: 5px;
+        font-weight: bold;
+    }
+
+    .footer-llama {
+        z-index: 1001 !important;
     }
 
     /* ASCII Art */
@@ -596,5 +669,41 @@
         animation: none !important;
         color: black !important;
         background: white !important;
+    }
+}
+
+/* Additional mobile body layout fixes */
+@media (max-width: 768px) {
+    body {
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+    }
+
+    .page-wrapper {
+        width: 100%;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    .site-footer {
+        margin-top: 30px;
+    }
+
+    /* Ensure footer is always visible */
+    html {
+        scroll-behavior: smooth;
+        height: 100%;
+    }
+
+    /* Fix any floating elements that might interfere */
+    .floating-gif,
+    .funny-horse,
+    .bunchie-llama {
+        clear: both;
+        display: block;
+        margin: 10px auto;
+        float: none !important;
     }
 }

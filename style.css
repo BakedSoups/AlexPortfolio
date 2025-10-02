@@ -5,20 +5,31 @@
     cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><text y="20" font-size="20">👆</text></svg>'), auto;
 }
 
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: "Arial", "Helvetica", sans-serif;
-    background:
-        radial-gradient(circle at 20% 80%, #2a1a2a 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, #1a2a3a 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, #3a1a1a 0%, transparent 50%),
-        linear-gradient(135deg, #0a0a0a 0%, #1a0a1a 25%, #0a1a1a 50%, #1a1a0a 75%, #0a0a0a 100%);
-    background-size: 400% 400%;
-    animation: darkGradientShift 25s ease infinite;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a0a1a 25%, #0a1a1a 50%, #1a1a0a 75%, #0a0a0a 100%);
     color: #d0d0d0;
     min-height: 100vh;
     overflow-x: hidden;
     margin: 0;
     padding: 0;
+}
+
+.page-wrapper {
+    width: 100%;
+}
+
+.clearfix {
+    clear: both;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
 }
 
 @keyframes darkGradientShift {
@@ -144,11 +155,7 @@ body {
 }
 
 .main-nav {
-    background:
-        linear-gradient(45deg, #660000, #000066, #006600, #660066, #666600),
-        repeating-linear-gradient(90deg, transparent, transparent 10px, rgba(255,255,255,0.1) 10px, rgba(255,255,255,0.1) 20px);
-    background-size: 300% 100%, 20px 100%;
-    animation: navRainbow 8s linear infinite;
+    background: linear-gradient(45deg, #660000, #000066, #006600, #660066, #666600);
     border: 2px solid #ffffff;
     padding: 10px;
     text-align: center;
@@ -173,10 +180,8 @@ body {
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    transition: all 0.3s;
+    transition: all 0.2s;
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
-    animation: buttonFloat 4s ease-in-out infinite;
-    animation-delay: calc(var(--i) * 0.2s);
 }
 
 @keyframes buttonFloat {
@@ -326,6 +331,118 @@ body {
     transform: scale(0.95);
 }
 
+/* Improved text readability */
+.window-content p,
+.window-content li,
+.window-content div {
+    color: #2a2a2a;
+    font-weight: 500;
+}
+
+.window-content h3,
+.window-content h4 {
+    color: #1a1a1a;
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
+    margin-bottom: 10px;
+}
+
+.window-content .highlight {
+    background: linear-gradient(45deg, #ffff00, #ffcc00);
+    color: #1a1a1a;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: bold;
+    text-shadow: none;
+}
+
+.window-content a {
+    color: #0066cc;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.window-content a:hover {
+    color: #004499;
+    background: rgba(255, 255, 0, 0.3);
+}
+
+.big-intro {
+    color: #1a1a1a !important;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.9);
+}
+
+.about-me,
+.gaming-section,
+.contact-section,
+.inspiration-section {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    padding: 15px;
+    margin: 15px 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced readability for about_alex.exe window */
+#home .window-content {
+    background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%) !important;
+    color: #1a1a1a;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+#home .window-content p {
+    color: #2a2a2a !important;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+#home .window-content h3 {
+    color: #0a0a0a !important;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.9);
+    margin: 20px 0 10px 0;
+    font-size: 18px;
+}
+
+#home .intro-text {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+#home .interests-list li {
+    color: #333 !important;
+    margin-bottom: 8px;
+    padding: 5px 0;
+    font-weight: 500;
+}
+
+#home .contact-item {
+    background: rgba(255, 255, 255, 0.9);
+    color: #1a1a1a !important;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin: 8px 0;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    font-weight: 500;
+}
+
+#home .achievement {
+    background: rgba(255, 255, 255, 0.9);
+    color: #1a1a1a !important;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    font-weight: 500;
+}
+
+#home .hero-info h4,
+#home .hero-info p {
+    color: #1a1a1a !important;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
 .nav-btn:hover {
     border-style: inset;
     transform: scale(0.95);
@@ -343,6 +460,7 @@ body {
     padding: 20px;
     max-width: 1400px;
     margin: 0 auto;
+    width: 100%;
 }
 
 .sidebar-left, .sidebar-right {
@@ -429,10 +547,13 @@ body {
 }
 
 .window-content {
-    background: #fff;
+    background: linear-gradient(135deg, #f8f8f8 0%, #e8e8e8 100%);
     padding: 20px;
     border: 2px inset #c0c0c0;
     margin: 2px;
+    color: #1a1a1a;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
 }
 
 .glitch-text {
@@ -441,6 +562,8 @@ body {
     font-weight: bold;
     text-transform: uppercase;
     animation: glitch 4s infinite;
+    color: #2a2a2a;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.9);
 }
 
 @keyframes glitch {
@@ -756,6 +879,11 @@ body {
     border-top: 5px ridge #ff00ff;
     margin-top: 50px;
     font-family: monospace;
+    position: static;
+    z-index: 100;
+    clear: both;
+    width: 100%;
+    display: block;
 }
 
 .footer-links {
@@ -767,6 +895,14 @@ body {
     text-decoration: none;
     margin: 0 10px;
     animation: colorCycle 3s linear infinite;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 255, 0, 0.5);
+}
+
+.footer-links a:hover {
+    color: #ffff00;
+    text-shadow: 1px 1px 2px rgba(255, 255, 0, 0.8);
+    text-decoration: underline;
 }
 
 @keyframes colorCycle {

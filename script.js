@@ -15,25 +15,36 @@ window.addEventListener('load', () => {
     initPacmanExplosion();
 });
 
-// Create a simple click sound using Web Audio API
+// Create a shared audio context for better performance
+let sharedAudioContext = null;
+function getAudioContext() {
+    if (!sharedAudioContext) {
+        sharedAudioContext = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    return sharedAudioContext;
+}
+
 function createClickSound() {
-    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-
     return function playClick() {
-        const oscillator = audioContext.createOscillator();
-        const gainNode = audioContext.createGain();
+        try {
+            const audioContext = getAudioContext();
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
 
-        oscillator.connect(gainNode);
-        gainNode.connect(audioContext.destination);
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
 
-        oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
-        oscillator.frequency.exponentialRampToValueAtTime(400, audioContext.currentTime + 0.01);
+            oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+            oscillator.frequency.exponentialRampToValueAtTime(400, audioContext.currentTime + 0.01);
 
-        gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
 
-        oscillator.start(audioContext.currentTime);
-        oscillator.stop(audioContext.currentTime + 0.1);
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.1);
+        } catch (e) {
+            // Silent fail if audio context is blocked
+        }
     };
 }
 
@@ -65,18 +76,23 @@ function animateVisitorCounter() {
 
 function initSparkles() {
     const sparklesContainer = document.getElementById('sparkles');
+    let sparkleThrottle = 0;
 
     document.addEventListener('mousemove', (e) => {
-        if (Math.random() > 0.9) {
+        sparkleThrottle++;
+        if (sparkleThrottle % 20 === 0 && Math.random() > 0.95) {
             createSparkle(e.pageX, e.pageY, sparklesContainer);
         }
     });
 
+    // Reduce frequency from 500ms to 2000ms
     setInterval(() => {
-        const x = Math.random() * window.innerWidth;
-        const y = Math.random() * window.innerHeight;
-        createSparkle(x, y, sparklesContainer);
-    }, 500);
+        if (document.visibilityState === 'visible') {
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+            createSparkle(x, y, sparklesContainer);
+        }
+    }, 2000);
 }
 
 function createSparkle(x, y, container) {
@@ -93,19 +109,21 @@ function createSparkle(x, y, container) {
 function initCursorTrail() {
     const trail = document.getElementById('cursor-trail');
     let mouseX = 0, mouseY = 0;
+    let trailThrottle = 0;
 
     document.addEventListener('mousemove', (e) => {
         mouseX = e.pageX;
         mouseY = e.pageY;
 
-        if (Math.random() > 0.8) {
+        trailThrottle++;
+        if (trailThrottle % 10 === 0 && Math.random() > 0.95) {
             const dot = document.createElement('div');
             dot.className = 'trail-dot';
             dot.style.left = mouseX + 'px';
             dot.style.top = mouseY + 'px';
             trail.appendChild(dot);
 
-            setTimeout(() => dot.remove(), 500);
+            setTimeout(() => dot.remove(), 300);
         }
     });
 }
