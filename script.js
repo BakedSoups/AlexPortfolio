@@ -12,6 +12,7 @@ window.addEventListener('load', () => {
     setupVideoPlayer();
     initEasterEggs();
     initClickSounds();
+    initPacmanExplosion();
 });
 
 // Create a simple click sound using Web Audio API
@@ -381,6 +382,56 @@ function createExplosion(element) {
 
         requestAnimationFrame(animateParticle);
     }
+}
+
+function initPacmanExplosion() {
+    const pacmanImages = document.querySelectorAll('.pacman-explode');
+
+    pacmanImages.forEach((pacman) => {
+        let isExploded = false;
+        let explosionTimeout = null;
+
+        pacman.addEventListener('mouseenter', function() {
+            if (!isExploded) {
+                // Create explosion sound effect
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+
+                // Create explosion sound
+                oscillator.frequency.setValueAtTime(150, audioContext.currentTime);
+                oscillator.frequency.exponentialRampToValueAtTime(40, audioContext.currentTime + 0.5);
+
+                gainNode.gain.setValueAtTime(0.5, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 0.5);
+
+                // Add exploded class after animation
+                explosionTimeout = setTimeout(() => {
+                    this.classList.add('exploded');
+                    isExploded = true;
+
+                    // Reset after 3 seconds
+                    setTimeout(() => {
+                        this.classList.remove('exploded');
+                        isExploded = false;
+                    }, 3000);
+                }, 500);
+            }
+        });
+
+        pacman.addEventListener('mouseleave', function() {
+            // Cancel explosion if mouse leaves quickly
+            if (explosionTimeout && !isExploded) {
+                clearTimeout(explosionTimeout);
+            }
+        });
+    });
 }
 
 function initEasterEggs() {

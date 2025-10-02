@@ -1,0 +1,589 @@
+/* Mobile Responsive Styles for Alex's Gaming Website */
+
+/* Tablet View (768px - 1024px) */
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .sidebar-left, .sidebar-right {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .main-content {
+        width: 100%;
+    }
+
+    .popup-window {
+        min-width: 90%;
+        max-width: 90%;
+    }
+
+    .nav-btn {
+        font-size: 10px;
+        padding: 6px 10px;
+    }
+
+    .window-frame {
+        margin: 10px 0;
+    }
+}
+
+/* Mobile View (max-width: 768px) */
+@media (max-width: 768px) {
+    /* Header Adjustments */
+    .site-header {
+        min-height: 120px;
+        padding: 15px 10px;
+    }
+
+    .site-title {
+        font-size: 20px;
+        padding: 8px 15px;
+        letter-spacing: 1px;
+    }
+
+    .skull-border {
+        font-size: 16px;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .header-stats {
+        flex-direction: column;
+        gap: 10px;
+        font-size: 11px;
+        padding: 8px 10px;
+    }
+
+    .visitor-counter {
+        font-size: 11px;
+        padding: 6px 10px;
+    }
+
+    /* Navigation */
+    .main-nav {
+        padding: 8px 5px;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .nav-btn {
+        font-size: 9px;
+        padding: 8px 10px;
+        margin: 3px;
+        min-width: fit-content;
+    }
+
+    /* Container and Layout */
+    .container {
+        padding: 10px 5px;
+        gap: 15px;
+    }
+
+    /* Sidebars */
+    .sidebar-left, .sidebar-right {
+        width: 100%;
+        order: 2;
+    }
+
+    .main-content {
+        order: 1;
+        min-height: auto;
+    }
+
+    /* Widgets */
+    .widget {
+        margin-bottom: 15px;
+        padding: 10px;
+    }
+
+    .widget-title {
+        font-size: 14px;
+        padding: 5px 10px;
+    }
+
+    /* Music Player */
+    .music-player {
+        padding: 10px;
+    }
+
+    .player-controls {
+        flex-direction: row;
+        gap: 5px;
+    }
+
+    .player-controls .pixel-btn {
+        font-size: 10px;
+        padding: 5px 8px;
+    }
+
+    /* Mood Display */
+    .mood-display {
+        padding: 10px;
+    }
+
+    .mood-icon {
+        font-size: 30px;
+    }
+
+    /* Window Frames */
+    .window-frame {
+        margin: 10px 0;
+    }
+
+    .window-header {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+
+    .window-controls button {
+        font-size: 10px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .window-content {
+        padding: 15px 10px;
+    }
+
+    /* Content Sections */
+    .glitch-text {
+        font-size: 18px;
+    }
+
+    .intro-section {
+        flex-direction: column;
+    }
+
+    .profile-pic-frame {
+        width: 100%;
+        max-width: 250px;
+        margin: 0 auto 20px;
+        float: none;
+    }
+
+    .intro-text {
+        width: 100%;
+    }
+
+    .big-intro {
+        font-size: 16px;
+    }
+
+    .interests-list {
+        font-size: 13px;
+    }
+
+    /* Achievement Showcase */
+    .achievement-showcase {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .achievement {
+        font-size: 12px;
+        padding: 8px;
+        width: 100%;
+    }
+
+    /* Contact Methods */
+    .contact-methods {
+        font-size: 12px;
+    }
+
+    .contact-item {
+        padding: 8px;
+        margin: 5px 0;
+    }
+
+    /* Tech Hero Section */
+    .hero-showcase {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .tech-hero-image {
+        width: 150px;
+        height: 150px;
+    }
+
+    /* Games Section */
+    .featured-game-card {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .featured-game-image {
+        width: 100%;
+        max-width: 250px;
+    }
+
+    .game-stats {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .games-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .fav-game-card {
+        padding: 10px;
+    }
+
+    .console-games {
+        flex-direction: column;
+    }
+
+    /* Videos Section */
+    .youtuber-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .youtuber-card {
+        padding: 15px;
+    }
+
+    .pinned-video-card {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .pinned-video-image {
+        width: 100%;
+        max-width: 250px;
+    }
+
+    .video-stats {
+        flex-direction: column;
+        gap: 5px;
+        font-size: 11px;
+    }
+
+    .viral-videos-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    /* Music Section */
+    .album-showcase {
+        padding: 15px;
+    }
+
+    .featured-album-card {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .album-cover-frame {
+        width: 200px;
+        height: 200px;
+        margin-bottom: 15px;
+    }
+
+    .album-info {
+        width: 100%;
+        text-align: center;
+    }
+
+    .artists-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Playlist Widget */
+    .playlist-widget {
+        padding: 10px;
+    }
+
+    .playlist-tracks {
+        font-size: 11px;
+        max-height: 200px;
+    }
+
+    .track-item {
+        padding: 8px;
+        font-size: 11px;
+    }
+
+    .playlist-controls {
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .playlist-btn {
+        font-size: 10px;
+        padding: 5px 8px;
+    }
+
+    /* Guestbook */
+    .guestbook-form {
+        padding: 10px;
+    }
+
+    .pixel-input {
+        font-size: 12px;
+        padding: 8px;
+        margin: 5px 0;
+    }
+
+    .guestbook-entries {
+        max-height: 250px;
+        font-size: 12px;
+    }
+
+    /* GameSpot Widgets */
+    .gamespot-widget {
+        padding: 10px;
+    }
+
+    .download-item {
+        padding: 8px;
+        font-size: 11px;
+    }
+
+    .download-btn {
+        font-size: 10px;
+        padding: 5px 8px;
+    }
+
+    .achievement-list .achievement {
+        padding: 8px;
+    }
+
+    .achievement-info {
+        font-size: 11px;
+    }
+
+    /* Poll Widget */
+    .poll-widget {
+        padding: 10px;
+    }
+
+    .poll-widget h4 {
+        font-size: 13px;
+    }
+
+    .poll-options {
+        font-size: 11px;
+    }
+
+    .vote-btn {
+        font-size: 10px;
+        padding: 5px 10px;
+    }
+
+    /* Ad Banner */
+    .ad-banner {
+        padding: 15px;
+        font-size: 12px;
+    }
+
+    /* Footer */
+    .site-footer {
+        padding: 15px 10px;
+        font-size: 10px;
+    }
+
+    .footer-links {
+        font-size: 10px;
+    }
+
+    /* ASCII Art */
+    .ascii-art pre {
+        font-size: 10px;
+        overflow-x: auto;
+    }
+
+    /* Disable marquee on mobile for better UX */
+    marquee {
+        animation: none;
+        display: block;
+        white-space: normal;
+        text-align: center;
+    }
+}
+
+/* Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+    .site-title {
+        font-size: 16px;
+        padding: 6px 10px;
+    }
+
+    .skull-border {
+        display: none;
+    }
+
+    .nav-btn {
+        font-size: 8px;
+        padding: 6px 8px;
+        margin: 2px;
+    }
+
+    .window-header {
+        font-size: 11px;
+    }
+
+    .glitch-text {
+        font-size: 16px;
+    }
+
+    .profile-pic-frame {
+        max-width: 200px;
+    }
+
+    .big-intro {
+        font-size: 14px;
+    }
+
+    .interests-list {
+        font-size: 12px;
+        padding-left: 20px;
+    }
+
+    .achievement-showcase {
+        font-size: 11px;
+    }
+
+    .contact-item {
+        font-size: 11px;
+        word-break: break-all;
+    }
+
+    .youtuber-card h4 {
+        font-size: 14px;
+    }
+
+    .sub-count {
+        font-size: 10px;
+    }
+
+    .pinned-video-card h3 {
+        font-size: 14px;
+    }
+
+    .album-cover-frame {
+        width: 150px;
+        height: 150px;
+    }
+
+    .track-item {
+        font-size: 10px;
+        padding: 6px;
+    }
+
+    /* Hide decorative elements on very small screens */
+    .corner-gif,
+    .dancing-gif,
+    .mini-gif {
+        display: none;
+    }
+
+    /* Simplify animations for performance */
+    * {
+        animation-duration: 0s !important;
+        animation-delay: 0s !important;
+    }
+
+    .blink {
+        animation: blink 1.5s infinite;
+    }
+
+    /* Essential animations only */
+    @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+    }
+}
+
+/* Touch-friendly adjustments */
+@media (hover: none) and (pointer: coarse) {
+    .nav-btn,
+    .pixel-btn,
+    .download-btn,
+    .vote-btn,
+    .playlist-btn,
+    .subscribe-btn,
+    .epic-watch-btn {
+        min-height: 44px;
+        min-width: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .window-controls button {
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    .pixel-input,
+    textarea.pixel-input {
+        min-height: 44px;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+
+    /* Improve touch targets */
+    .poll-options label {
+        padding: 10px 0;
+        display: block;
+    }
+
+    input[type="radio"] {
+        margin-right: 10px;
+        transform: scale(1.5);
+    }
+}
+
+/* Landscape orientation adjustments */
+@media (max-width: 768px) and (orientation: landscape) {
+    .site-header {
+        min-height: 80px;
+        padding: 10px;
+    }
+
+    .site-title {
+        font-size: 16px;
+    }
+
+    .container {
+        padding: 5px;
+    }
+
+    .window-content {
+        padding: 10px;
+    }
+}
+
+/* Print styles (bonus) */
+@media print {
+    .sidebar-left,
+    .sidebar-right,
+    .main-nav,
+    .skull-border,
+    marquee,
+    .sparkles,
+    .cursor-trail,
+    .popup-modal {
+        display: none !important;
+    }
+
+    .container {
+        display: block;
+    }
+
+    .main-content {
+        width: 100%;
+    }
+
+    * {
+        animation: none !important;
+        color: black !important;
+        background: white !important;
+    }
+}
