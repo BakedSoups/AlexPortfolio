@@ -249,17 +249,50 @@ function playSystemSound() {
 }
 
 function setupGuestbook() {
+    // Load existing entries when page loads
+    loadGuestbookEntries();
+
     const signButton = document.querySelector('.guestbook-form button');
     if (signButton) {
-        signButton.addEventListener('click', () => {
+        signButton.addEventListener('click', async () => {
             const nameInput = document.querySelector('.guestbook-form input');
             const messageInput = document.querySelector('.guestbook-form textarea');
 
             if (nameInput.value && messageInput.value) {
-                addGuestbookEntry(nameInput.value, messageInput.value);
-                nameInput.value = '';
-                messageInput.value = '';
-                showPopup('Guestbook Signed!', 'Thanks for signing my guestbook!<br>You\'re awesome! Come back soon!<br><br>Don\'t forget to add me on MSN!', '✍️');
+                // Disable button while submitting
+                signButton.disabled = true;
+                signButton.textContent = 'SIGNING...';
+
+                try {
+                    // Send to API
+                    const response = await fetch('/api/guestbook', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            name: nameInput.value,
+                            message: messageInput.value
+                        })
+                    });
+
+                    if (response.ok) {
+                        const newEntry = await response.json();
+                        addGuestbookEntry(newEntry.name, newEntry.message);
+                        nameInput.value = '';
+                        messageInput.value = '';
+                        showPopup('Guestbook Signed!', 'Thanks for signing my guestbook!<br>You\'re awesome! Come back soon!<br><br>Don\'t forget to add me on MSN!', '✍️');
+                    } else {
+                        throw new Error('Failed to sign guestbook');
+                    }
+                } catch (error) {
+                    console.error('Error signing guestbook:', error);
+                    showPopup('Error', 'Oops! Something went wrong!<br>Please try again later!<br><br>(The hamsters powering the server might be sleeping)', '⚠️');
+                } finally {
+                    // Re-enable button
+                    signButton.disabled = false;
+                    signButton.textContent = 'SIGN!';
+                }
             } else {
                 showPopup('Error', 'Please fill in all fields!<br>I need to know who you are!', '⚠️');
             }
@@ -273,6 +306,38 @@ function addGuestbookEntry(name, message) {
     newEntry.className = 'entry';
     newEntry.innerHTML = `<strong>${name}:</strong> ${message}`;
     entriesContainer.insertBefore(newEntry, entriesContainer.firstChild);
+}
+
+async function loadGuestbookEntries() {
+    try {
+        const response = await fetch('/api/guestbook');
+        if (response.ok) {
+            const entries = await response.json();
+            const entriesContainer = document.querySelector('.guestbook-entries');
+
+            // Clear existing placeholder entries
+            entriesContainer.innerHTML = '';
+
+            // Add entries from API
+            entries.forEach(entry => {
+                const entryDiv = document.createElement('div');
+                entryDiv.className = 'entry';
+                entryDiv.innerHTML = `<strong>${entry.name}:</strong> ${entry.message}`;
+                entriesContainer.appendChild(entryDiv);
+            });
+
+            // If no entries, show a message
+            if (entries.length === 0) {
+                const entryDiv = document.createElement('div');
+                entryDiv.className = 'entry';
+                entryDiv.innerHTML = '<em>Be the first to sign the guestbook!</em>';
+                entriesContainer.appendChild(entryDiv);
+            }
+        }
+    } catch (error) {
+        console.error('Error loading guestbook entries:', error);
+        // Keep the default entries if API fails
+    }
 }
 
 function setupGameCards() {

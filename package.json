@@ -1,0 +1,16 @@
+{
+  "name": "alex-portfolio",
+  "version": "1.0.0",
+  "description": "Alex's retro 2000s portfolio site",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'No build step required'",
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "@vercel/postgres": "^0.5.1"
+  },
+  "devDependencies": {
+    "vercel": "^32.5.0"
+  }
+}
